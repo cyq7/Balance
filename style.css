@@ -439,7 +439,6 @@ input:focus::placeholder {
     pointer-events: none;
 }
 
-
 .piggyBank span {
     width: 100%;
     padding-left: 15px;
@@ -563,7 +562,6 @@ input:focus::placeholder {
 .pigDetails .savings {
     color: var(--green);
 }
-
 
 .progressCircle {
     width: 250px;
