@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilans</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f58497a0c9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="decoration" class="decoration"></div>
+    <div id="pigDecoration" class="pigDecoration"></div>
+<!-- _________________MAIN MENU__________________ -->
+    <h2 id="mainHeader">Moje finanse</h2>
+    <div class="container">
+        <div class="topWrapper">
+            <div>
+                <h4><span>Bilans</span> </h4>
+                <h1 id="balance"> <span>0zł</span></h1>
+            </div>
+            <div class="pigsCollection">
+                <h4><span>Skarbonki</span> </h4>
+                <i title="Otwórz skarbonkę" id="pig" class="fas fa-2x fa-piggy-bank"></i>
+            </div>
+        </div>
+        <div class="inc-exp">
+            <div>
+                <h4>Przychody</h4>
+                <p id="plus" class="money plus"> 100zł</p>
+            </div>
+            <div>
+                <h4>Wydatki</h4>
+                <p id="minus" class="money minus"> 50zł </p>
+            </div>
+        </div>
+
+        <h3> 
+            <span>Transakcje</span> 
+            <span>
+                <i title="Dodaj nową transakcję" id="add" class="fas fa-plus"> </i>
+                <i title="Usuń historię transakcji" id="showWarning" class="far fa-trash-alt"></i>
+            </span>
+        </h3>
+        <ul id="history" class="history">
+            <!-- <li class="minus"> Title <span> - 200zł </span> <button class="deleteBtn">x</button></li> -->
+        </ul>
+        <div class="showMoreBtn" id="showMoreBtn"><i class="fas fa-2x fa-chevron-down"></i></div>
+
+        <!-- _________________PIGGY BANKS__________________ -->
+    </div>
+        <div id="piggyBanks" class="piggyBanks">
+                <h2> Skarbonki </h2>
+                <div class="pigContainer" id="pigContainer">
+                <i id="x" class="x fas fa-2x fa-plus"></i>
+                <!-- <li class="piggyBank">
+                    <i class="fas fa-3x fa-piggy-bank"></i>
+                    <span class="pigTitle">Title</span>
+                    <div class="pigTags">
+                        <p>1200</p>
+                        <p>3000</p>
+                    </div>
+                </li> -->
+                </div>
+                <button id="openSavingsFormBtn" class="openSavingsFormBtn">Otwórz nową skarbonkę</button>
+        </div>
+            <!-- _________________PIGGY FORM__________________ -->
+        <form class="savingsForm" id="savingsForm" autocomplete="off">
+            <h4>Dodaj nową skarbonkę</h4>
+            <input class="pigText" id="pigText" maxlength="18" type="text" placeholder="Na co zbieram...">
+            <input class="pigTarget" id="pigTarget" type="number" min="100" max="99999" id="amount" placeholder="Ile potrzebuję...">
+            <button id="addNewPigBtn" type="submit" class="btn">Dodaj</button>
+            <div id="cancelPig" class="cancel">Anuluj</div>
+        </form>
+            <!-- _________________PIGGY DETAILS__________________ -->
+
+
+    <!-- _________________TRANSACTION FORM__________________ -->
+        <form class="transactionForm" id="form" autocomplete="off">
+                <h4 class="animatedHeader">Dodaj nową transakcję</h4>
+                <div class="switch">
+                    <input id="switch" type="checkbox">
+                </div>
+                <input type="text" maxlength = "25" class="text" id="transactionText" placeholder="Nazwa transakcji">
+                <input type="number"  max = "99999" class="amount" id="transactionAmount" placeholder="Kwota">
+                <button id="btn" type="submit" class="btn">Dodaj</button>
+                <div id="cancel" class="cancel">Anuluj</div>
+        </form>
+        <!-- _________________WARNING MESSAGE__________________ -->
+        <div id="warning" class="warning">
+            <i class="fas fa-5x fa-exclamation"></i>
+            <div class="innerContainer">
+                <h5>Opcja ta spowoduje wyzerowanie salda oraz usunięcie wszystkich transakcji oraz utworzonych skarbonek.</h5>
+                <h5>Czy chcesz trwale usunąć historię transakcji?</h5>
+                <div id="buttonsContainer" class="buttonsContainer">
+                    <button id="warningCancelBtn" class="btn back"> Cofnij </button>
+                    <button id="acceptBtn" class="btn accept"> Tak </button>
+                </div>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

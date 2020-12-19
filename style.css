@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+:root {
+    --boxShadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --green: #05a000;
+    --red: #e44545;
+    --gold: #ffbb00;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+     background-color: #fdfdfd;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     min-height: 100vh;
+     margin: 0;
+     font-family: 'Roboto Mono', monospace;
+}
+
+.decoration{
+    background: var(--green);
+    width: 100%;
+    height: 8px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.container {
+    margin: 30px auto;
+    width: 350px;
+}
+
+.topWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px;
+}
+
+.pigsCollection .fa-piggy-bank{
+    width: 100%;
+    text-align: right;
+}
+
+h1 {
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+h2 {
+    padding: 40px 0 0;
+}
+
+h3 {
+    display: flex;
+    border-bottom: 1px solid #aaa;
+    margin: 40px 0 10px;
+    color: #444;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0 10px;
+    text-transform: uppercase;
+}
+
+h4 {
+    margin: 0 5px;;
+    padding: 0 0 10px;
+    text-transform: uppercase;
+}
+
+
+
+i {
+   color: #555;
+   padding: 0 10px;
+}
+
+i:hover {
+    cursor: pointer;
+    color: #000;
+}
+
+
+.inc-exp {
+    background: #fff;
+    box-shadow: var(--boxShadow);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    border-radius: 5px;
+}
+
+.inc-exp > div {
+    flex: 1;
+    text-align: center;
+}
+
+.inc-exp > div:first-of-type {
+    border-right: 1px solid #dedede;
+}
+
+
+.money {
+    font-size: 20px; 
+    letter-spacing: 1px;
+    margin: 5px 0;
+}
+
+.money.plus {
+    color: var(--green);
+}
+
+.money.minus {
+    color: var(--red);
+}
+
+.transactionForm, 
+.savingsForm,
+.warning, 
+.piggyBanks,
+.pigDetails,
+.payInForm {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: -1000px;
+    transition: 0.7s ease-in-out;
+    overflow-y: auto;
+}
+
+
+/* ___________________HISTORY LIST__________________ */
+.history {
+    list-style-type: none;
+    padding: 0;
+}
+
+li{
+    background-color: #fff;
+    box-shadow: var(--boxShadow);
+    color: #333;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    display: none;
+    opacity: 0;
+    transition: .3s ease-in-out;
+}
+
+li:nth-child(-n+5) {
+    display: flex;
+    opacity: 1;
+}
+
+li.show {
+    opacity: 1;
+    display: flex;
+}
+
+li.minus {
+    border-right: 4px solid  var(--red);
+}
+
+li.plus {
+    border-right: 4px solid var(--green);
+}
+
+li.gold {
+    border-right: 4px solid var(--gold);
+}
+
+li:hover{
+    transform: rotateY(10deg);
+}
+
+.deleteBtn {
+    background: var(--red);
+    border: 0;
+    color: #fff;
+    border-radius: 5px 0 0 5px;
+    width: 15px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    right: left;
+    transform: translate(-25px, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.history li:hover .deleteBtn {
+    opacity: 1;
+}
+
+.deleteBtn:focus {
+    outline: 0;
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+}
+
+.showMoreBtn {
+    font-size: 10px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    display: none;
+    transition: .5s;
+}
+
+.showMore:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.showMoreBtn.show {
+    display: block;
+}
+
+.showMoreBtn.rotate {
+    transform: rotate(180deg);
+}
+
+/* ___________________FORM__________________ */
+.transactionForm.show {
+    transform: translateY(1000px);
+}
+
+.animatedHeader {
+    font-size: 22px;
+    letter-spacing: 3px;
+    transition: 1s;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.show .animatedHeader {
+    opacity: 1;
+}
+
+.switch {
+    position:relative;
+    margin: 20px;
+}
+
+.transactionForm input[type="checkbox"] {
+    width: 180px; 
+    height: 40px;
+    -webkit-appearance: none;
+    background: #eee;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    transition: .5s;
+    margin: 0;
+    border: none;
+}
+
+.transactionForm input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+.transactionForm input[type="checkbox"]:before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 36px;
+    border-radius: 20px;
+    top: 2px;
+    left: 2px;
+    background: var(--red);
+    transition: .5s;
+}
+
+.transactionForm input:checked[type="checkbox"]:before {
+    background: #00a03d;
+    left: 58px;
+}
+
+.transactionForm input[type="checkbox"]:after {
+    content: "WYDATEK";
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+    position: absolute;
+    top: 11px; 
+    left: 2px;
+    width: 120px;
+    height: 36px;
+    transition: .5s;
+}
+
+.transactionForm input:checked[type="checkbox"]:after {
+    content: "PRZYCHÓD";
+    left: 58px;
+}
+
+
+input {
+    border: 0;
+    text-align: center;
+    background: transparent;
+    font-size: 15px;
+    padding: 20px;
+    width: 50%;
+    -moz-appearance:textfield;
+    font-size: 18px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+
+.btn {
+    background: var(--red);
+    box-shadow: var(--boxShadow);
+    color: #fff;
+    border: 0;
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 30px;
+    padding: 10px;
+    width: 250px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: var(--red);
+}
+
+.cancel {
+    font-size: 12px;
+}
+
+.cancel:hover {
+   text-decoration: underline;
+   cursor: pointer;
+}
+
+/* ___________________PIGGY BANK__________________ */
+
+.piggyBanks.show {
+    transform: translateY(1000px);
+    background-color: #fff;
+    justify-content: flex-start;
+    overflow-y:visible;
+    background: #fdfdfd;
+}
+
+.pigContainer {
+    width: 350px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.fa-piggy-bank:hover {
+    color: var(--gold);
+}
+
+.pigDecoration {
+    background: var(--gold);
+    width: 100%;
+    height: 8px;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 0.5s ease-in-out;
+    transition-delay: .2s;
+    z-index: 101;
+}
+
+.pigDecoration.show {
+    transform: translateX(100%);
+}
+
+.x {
+    position: absolute;
+    top: -50px; 
+    right: 0;
+    transform: rotate(45deg) scale(0.8);
+    transition: .5s;
+}
+
+.x:hover{
+    transform: rotate(135deg) scale(0.8);
+}
+
+.piggyBank {
+    display: flex;
+    width: 330px;
+    justify-content: flex-start;
+    align-items: center;
+    border-right: 5px solid var(--gold);
+    transition: 0.3s;
+    position: relative;
+    padding: 15px 10px; 
+}
+
+.piggyBank:nth-child(-n+1000) {
+    display: flex;
+    opacity: 1;
+}
+
+.piggyBank * {
+    pointer-events: none;
+}
+
+
+.piggyBank span {
+    width: 100%;
+    padding-left: 15px;
+    font-weight: bold;
+}
+
+.pigTags {
+    display: flex;
+    position: absolute;
+    font-size: 12px;
+    right: 0;
+    bottom: -10px;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.pigTags p:first-of-type {
+    color: var(--green);
+}
+
+.pigTags p:last-of-type {
+    color: #999;
+}
+
+.piggyBank:hover {
+    cursor: pointer;
+    transform: rotateY(10deg)
+}
+
+.piggyBank:hover .fa-piggy-bank,
+.piggyBank:hover .fa-plus{
+    color: var(--gold);
+}
+
+.piggyBank.finished {
+    background: var(--gold);
+}
+
+.piggyBank.finished:hover .fa-piggy-bank {
+    color: #555;
+}
+
+.openSavingsFormBtn {
+    color: #333;
+    justify-content: space-between;
+    position: relative;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 3px;
+    border: 2px solid var(--gold);
+    background: transparent;
+    font-weight: bold;
+}
+
+.openSavingsFormBtn.hide {
+    display: none;
+}
+
+.openSavingsFormBtn:focus {
+    outline: none;
+}
+
+.openSavingsFormBtn:hover {
+    cursor: pointer;
+    box-shadow: var(--boxShadow);
+    background: var(--gold);
+}
+
+.savingsForm.show {
+    transform: translateY(1000px);
+    display: flex;
+    z-index: 101;
+}
+
+.savingsForm .btn {
+    background: var(--gold);
+}
+
+.pigDetails {
+    /* transform: translateY(1000px); */
+    display: flex;
+    background: #fdfdfd;
+    justify-content: flex-start;
+    width: 356px;
+    transition: .5s ease-in-out;
+    position: absolute;
+}
+.pigDetails.show {
+    transform: translateY(1000px);
+}
+
+
+
+.pigDetails .x{
+    top: 60px;
+    right: 10px;
+}
+
+.fa-chevron-left {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    transition: .5s ease-in-out;
+    transform: scale(0.8);
+    color: #555;
+}
+
+.fa-chevron-left:hover {
+    cursor: pointer;
+    transform: translateX(-5px) scale(0.8);
+}
+
+.pigDetails .inc-exp {
+    width: 340px;
+}
+
+.pigDetails .target {
+    color: var(--gold);
+}
+
+.pigDetails .savings {
+    color: var(--green);
+}
+
+
+.progressCircle {
+    width: 250px;
+    height: 450px;
+    background: transparent;
+    border: 10px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+    color: var(--gold);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3), 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.box {
+    position: relative;
+    width: 350px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box svg {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    transform: rotate(-90deg);
+}
+
+.box svg circle {
+    width: 250px;
+    height: 250px;
+    fill: none;
+    stroke-width: 10;
+    stroke: var(--gold);
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    transform: translate(5px, 5px);
+}
+
+.box svg circle:nth-child(1) {
+    stroke-dashoffset: 0;
+    stroke: #e3e3e3;
+}
+
+.box svg circle:nth-child(2) {
+    stroke-dashoffset: calc(800 - (800 * 62) / 100);
+    stroke: var(--gold);
+    stroke-linecap: round;
+}
+
+.box .percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box .percent h5 {
+    font-size: 50px;
+    color: #555;
+}
+
+.box .percent h5 span{
+    font-size: 25px;
+    color: #888;
+}
+
+.bottomContainer {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 16px;
+    top: -30px;
+}
+
+.bottomContainer .fas {
+    padding: 15px;
+}
+
+.payInFormBtn {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.payInFormBtn:hover,
+.breakContainer:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.payInFormBtn:hover .fas {
+    color: var(--gold);
+}
+
+.breakContainer {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.breakContainer:hover .fas {
+    color: var(--red);
+}
+
+.payInForm {
+    /* transform: translateY(1000px); */
+}
+
+.payInForm.show {
+    transform: translateY(1000px);
+}
+
+.payInForm h4 {
+    padding: 20px;
+}
+
+.payInBtn{
+    background: var(--gold);
+    width: 330px;
+}
+
+.payInBtn:hover {
+    background: var(--gold);
+    filter: brightness(1.05);
+}
+
+
+/* ___________________WARNING MESSAGE__________________ */
+.warning.show {
+    transform: translateY(1000px);
+}
+
+.waring h5 {
+    font-size: 25px;
+}
+
+.fa-exclamation {
+color: var(--red);
+}
+
+.fa-exclamation:hover {
+    color:  var(--red);
+    cursor: default;
+}
+
+.innerContainer {
+    width: 300px;
+    text-align: center;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: space-around;
+    opacity: 0;
+    transition: 1.5s ease-in-out;
+    pointer-events: none;
+}
+
+.buttonsContainer.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.back {
+    width: 40%;
+    background: transparent;
+    border: 1px solid  var(--red);
+    color: #000;
+}
+
+.accept {
+    width: 40%;
+}
+
