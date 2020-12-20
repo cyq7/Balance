@@ -132,9 +132,9 @@
             .reduce((acc, item) => (acc += item), 0) * -1)
             .toFixed(2);
 
-        balance.innerHTML = `${total}`;
-        plus.innerText = `${income}`;
-        minus.innerText = `${expense}`;
+        balance.innerHTML = `${total} <span>PLN</span>`;
+        plus.innerHTML = `${income}`;
+        minus.innerHTML = `${expense}`;
 
         updateDecoration(total);
     }
@@ -419,7 +419,7 @@ function closePayInForm() {
                         pigD.classList.remove('show');
                     }
                 })
-            }) 
+            })
         })
 
 // open specific piggy Bank
