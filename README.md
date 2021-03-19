@@ -7,7 +7,6 @@ The application allows you to control your income and expenses. The main page co
 
 Additionally, the app helps you save money. It allows you to create moneyboxes for future purposes.
 
-And all this in a comfortable and intuitive graphic design. Enjoy!
 
 ## Usage
 
