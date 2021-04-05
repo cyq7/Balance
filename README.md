@@ -11,4 +11,4 @@ Additionally, the app helps you save money. It allows you to create moneyboxes f
 ## Usage
 
 Be aware, that the application is **not** based on a external database.
-Changes in the application are saved in a Local Storage.
+Changes in the application are saved in a Local Storage in your browser.
